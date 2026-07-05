@@ -1,8 +1,16 @@
+<p align="center">
+  <img src="assets/icon.svg" width="120" alt="menubar-pomodoro icon">
+</p>
+
 # menubar-pomodoro
 
 A macOS-native Pomodoro timer that lives in your menu bar. Single Python script, no Electron, no dependencies beyond PyObjC.
 
 Cycle: 45m work → 5m short break, repeated 3 times, then a 15m long break.
+
+|Working|On break|
+|---|---|
+|![Active](assets/screenshots/menubar-active.png)|![Break](assets/screenshots/menubar-break.png)|
 
 ## Features
 - Native macOS menu bar icon (PyObjC/AppKit), changes to a "sleepy" icon during breaks

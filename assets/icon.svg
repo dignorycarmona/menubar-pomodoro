@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A02540"/>
+      <stop offset="100%" stop-color="#7C1D2E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- leaf / lever, doubles as a clock hand at 12 -->
+  <path d="M100 46 C 92 30, 108 16, 128 20 C 118 34, 112 42, 100 46 Z" fill="#EDEDED"/>
+
+  <!-- body -->
+  <circle cx="100" cy="112" r="64" fill="url(#body)"/>
+
+  <!-- minute hand, pointing to 2 o'clock: reads as a lever pulled -->
+  <line x1="100" y1="112" x2="130" y2="82" stroke="#EDEDED" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="100" cy="112" r="6" fill="#EDEDED"/>
+</svg>
