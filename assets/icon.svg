@@ -6,13 +6,42 @@
     </linearGradient>
   </defs>
 
-  <!-- leaf / lever, doubles as a clock hand at 12 -->
-  <path d="M100 46 C 92 30, 108 16, 128 20 C 118 34, 112 42, 100 46 Z" fill="#EDEDED"/>
+  <!-- calyx: five-point tomato leaf -->
+  <path d="
+    M100 46
+    C 96 34, 86 26, 74 28
+    C 82 36, 86 42, 90 48
+    C 78 42, 64 42, 56 52
+    C 68 54, 78 58, 86 64
+    C 74 62, 62 66, 56 76
+    C 70 74, 82 76, 92 82
+    C 96 74, 100 68, 100 60
+    C 100 68, 104 74, 108 82
+    C 118 76, 130 74, 144 76
+    C 138 66, 126 62, 114 64
+    C 122 58, 132 54, 144 52
+    C 136 42, 122 42, 110 48
+    C 114 42, 118 36, 126 28
+    C 114 26, 104 34, 100 46
+    Z"
+    fill="#EDEDED"/>
 
-  <!-- body -->
-  <circle cx="100" cy="112" r="64" fill="url(#body)"/>
+  <!-- tomato body -->
+  <circle cx="100" cy="122" r="62" fill="url(#body)"/>
 
-  <!-- minute hand, pointing to 2 o'clock: reads as a lever pulled -->
-  <line x1="100" y1="112" x2="130" y2="82" stroke="#EDEDED" stroke-width="7" stroke-linecap="round"/>
-  <circle cx="100" cy="112" r="6" fill="#EDEDED"/>
+  <!-- gloss swoosh -->
+  <path d="M 62 96 C 58 112, 58 132, 66 148" stroke="#C1435F" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.55"/>
+
+  <!-- clock ticks -->
+  <g stroke="#EDEDED" stroke-width="3" stroke-linecap="round" opacity="0.9">
+    <line x1="100" y1="66" x2="100" y2="74"/>
+    <line x1="100" y1="170" x2="100" y2="178"/>
+    <line x1="38" y1="122" x2="46" y2="122"/>
+    <line x1="154" y1="122" x2="162" y2="122"/>
+  </g>
+
+  <!-- clock hands -->
+  <line x1="100" y1="122" x2="100" y2="90" stroke="#EDEDED" stroke-width="6" stroke-linecap="round"/>
+  <line x1="100" y1="122" x2="124" y2="122" stroke="#EDEDED" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="100" cy="122" r="6" fill="#EDEDED"/>
 </svg>
