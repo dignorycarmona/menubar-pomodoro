@@ -1,0 +1,4 @@
+pomodoro.log
+pomodoro.err
+.DS_Store
+__pycache__/
