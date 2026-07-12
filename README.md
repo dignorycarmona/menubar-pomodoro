@@ -27,7 +27,11 @@ You'll get a notification and a soft sound when it's time to switch from working
 
 1. Download the app from the [Releases page](../../releases/latest) — look for `Pomodoro.zip`.
 2. Unzip it (double-click the file), and drag `Pomodoro.app` into your **Applications** folder.
-3. Open it. Since it wasn't downloaded from the App Store, macOS will warn you it's from an "unidentified developer." That's expected. Right-click the app, choose **Open**, and confirm.
+3. Double-click to open it. Since it wasn't downloaded from the App Store, macOS blocks it and says it can't check it for malware. **That's expected, and the app is safe.** To let it run:
+   - Open **System Settings → Privacy & Security**.
+   - Scroll down to the **Security** section. You'll see a line saying "Pomodoro was blocked." Click **Open Anyway**, then enter your password.
+   - If that button isn't there yet, try opening the app once first, then go back and look.
+   - Still stuck? Open the **Terminal** app, paste `xattr -cr /Applications/Pomodoro.app`, press Return, then open the app normally.
 4. Look at the top-right of your screen, next to the clock and wifi icon. You'll see a little smiley face, that's the timer.
 
 That's it. It'll keep running in the background from now on. To make it start automatically every time you turn on your Mac, add it to **System Settings → General → Login Items**.
