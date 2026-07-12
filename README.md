@@ -36,6 +36,17 @@ You'll get a notification and a soft sound when it's time to switch from working
 
 That's it. It'll keep running in the background from now on. To make it start automatically every time you turn on your Mac, add it to **System Settings → General → Login Items**.
 
+## Quitting and uninstalling it
+
+To **quit** for now: click the face in the menu bar and choose **Quit**. (It won't come back until you open the app again.)
+
+To **uninstall** it completely:
+1. Click the face in the menu bar and choose **Quit**.
+2. Open your **Applications** folder, drag **Pomodoro** to the Trash, and empty the Trash.
+3. If you added it to Login Items, remove it there: **System Settings → General → Login Items**.
+
+That's all most people need. If you also want to wipe the tiny state files it leaves in your home folder, open **Terminal** and paste: `rm -f ~/.pomodoro_paused ~/.pomodoro_camera_paused ~/.pomodoro_break`
+
 ---
 
 ## For developers

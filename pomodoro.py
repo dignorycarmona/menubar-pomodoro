@@ -42,6 +42,14 @@ class PomodoroStatusBar(NSObject):
         )
         self.toggle_item.setTarget_(self)
         menu.addItem_(self.toggle_item)
+
+        menu.addItem_(NSMenuItem.separatorItem())
+        quit_item = NSMenuItem.alloc().initWithTitle_action_keyEquivalent_(
+            "Quit", "terminate:", "q"
+        )
+        quit_item.setTarget_(self.app)
+        menu.addItem_(quit_item)
+
         self.status_item.setMenu_(menu)
 
         self.update_icon()
