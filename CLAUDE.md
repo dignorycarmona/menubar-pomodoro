@@ -32,9 +32,9 @@ Two components run in parallel within a single process:
 
 Timer resumes where it left off after any pause. Manual pause takes priority — if you manually pause during a call, it stays paused after the call ends.
 
-**Camera detection:** `is_camera_in_use()` polls `ioreg -c IOAVCVideoDeviceType` every second to detect active video calls. Auto-pauses with a notification when camera turns on; auto-resumes when camera turns off (unless manually paused).
+**Camera detection:** `is_camera_in_use()` polls `ioreg -r -k FrontCameraStreaming` every second to detect active video calls. Matches on the `FrontCameraStreaming` key across all camera classes (chip-agnostic — class names like `AppleH16CamIn` are chip-specific and differ across M1/M2/M3/M4). Auto-pauses when camera turns on; auto-resumes when it turns off (unless manually paused). `sync_camera_pause()` is the single source of truth, shared by the wait and pause loops.
 
-**macOS-specific:** Uses `osascript` for notifications, `afplay` for audio alerts (Ripples.m4r ringtone).
+**macOS-specific:** Uses `osascript` for notifications, `afplay` for audio alerts (Hillside.m4r ringtone, with a system-sound then `NSBeep` fallback in `play_sound()` if Apple moves the file).
 
 ## Configuration
 

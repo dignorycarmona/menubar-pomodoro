@@ -64,9 +64,15 @@ python3 pomodoro.py           # start
 python3 pomodoro.py --toggle  # pause/resume a running instance
 ```
 
+### Running at login
+
+**Simplest (recommended):** build the `.app` (below), drag it to `/Applications`, and add it to **System Settings → General → Login Items**. No plist, no Python path issues.
+
 ### Running as a background service (Launch Agent)
 
-1. Edit `com.user.pomodoro.plist` and replace `/Users/YOUR_USER/path/to/pomodoro/` with your actual path.
+Prefer this only if you want to run from source. Note: the plist points at `/usr/bin/python3`, which on a stock Mac does **not** have `pyobjc` — the service will crash on launch. Point `ProgramArguments` at a Python that has `pyobjc` (your Homebrew/venv interpreter, e.g. `$(which python3)`), or use the `.app` + Login Items route above instead.
+
+1. Edit `com.user.pomodoro.plist`: replace `/Users/YOUR_USER/path/to/pomodoro/` with your actual path, and set the Python path as noted above.
 2. Install it:
 
 ```bash
@@ -79,6 +85,8 @@ launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.user.pomodoro.plist
 ```bash
 launchctl kickstart -k gui/$(id -u)/com.user.pomodoro
 ```
+
+The plist uses `KeepAlive` = `{SuccessfulExit: false}`, so **Quit** (a clean exit) stops it until next login, but a crash still auto-restarts it.
 
 ### Building the standalone `.app`
 
@@ -100,4 +108,4 @@ Two components run in parallel within a single process:
 - **GUI thread (main):** `PomodoroStatusBar` class (subclasses `NSObject`), the native macOS menu bar icon. Polls pause state every 1s via `NSTimer`.
 - **Timer thread (daemon):** `run_pomodoro()`, cycles through work/break sessions. Detects system wake via time jumps > 10s and restarts the cycle.
 
-**IPC:** file-based flags in the home directory: `~/.pomodoro_paused` (manual pause), `~/.pomodoro_camera_paused` (auto-pause from a video call), `~/.pomodoro_break` (drives the "sleepy" icon during breaks). Camera state is polled via `ioreg -c IOAVCVideoDeviceType`.
+**IPC:** file-based flags in the home directory: `~/.pomodoro_paused` (manual pause), `~/.pomodoro_camera_paused` (auto-pause from a video call), `~/.pomodoro_break` (drives the "sleepy" icon during breaks). Camera state is polled via `ioreg -r -k FrontCameraStreaming`, matched across all camera classes so it works on any Apple Silicon chip.
